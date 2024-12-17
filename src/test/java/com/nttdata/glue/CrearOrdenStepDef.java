@@ -22,7 +22,20 @@ public class CrearOrdenStepDef {
     }
 
 
+    @And("el campo {string} es {int}")
+    public void elCampoEs(String campo, int valorEsperado) {crearOrden.elCampoEs(campo,valorEsperado);
+    }
 
+
+    @And("el campo {string} es {string}")
+    public void elStatusEs(String status, String statusEsperado) {crearOrden.elStatusEs(status,statusEsperado);
+    }
+
+
+    @And("el petId {string} es {int}")
+    public void elPetIdEs(String campo, int IdEsperado) {crearOrden.elPetIdEs(campo,
+            IdEsperado);
+    }
 
 
 }

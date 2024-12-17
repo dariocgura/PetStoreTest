@@ -40,4 +40,28 @@ public class CrearOrden {
     public void validarCodigoRespuesta(int statusCode) {
         restAssuredThat(response -> response.statusCode(statusCode));
     }
+
+
+    public void elCampoEs(String campo, int valorEsperado) {
+        SerenityRest.then()
+                .body(campo, equalTo(valorEsperado));
+    }
+
+    public void elStatusEs(String status, String statusEsperado) {
+        SerenityRest.then()
+                .body(status, equalTo(statusEsperado));
+    }
+
+    public void elPetIdEs(String campo, int IdEsperado) {
+        SerenityRest.then()
+                .body(campo, equalTo(IdEsperado));
+    }
+
+    public void elCompleteEs(String campo, boolean boolEsperado) {
+        SerenityRest.then()
+                .body(campo, equalTo(boolEsperado));
+    }
+
+
+
 }
