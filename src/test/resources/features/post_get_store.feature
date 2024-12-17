@@ -6,6 +6,8 @@ Feature: POST/GET Store
 
     When creo la orden con id <id>, petId <petId>, quantity <quantity>
     Then el código de respuesta es 200
+    And el campo "quantity" es <quantity>
+    And el campo "status" es "placed"
 
     Examples:
       | id | petId | quantity |
@@ -18,7 +20,8 @@ Feature: POST/GET Store
 
     When consulto la orden con id <id>
     Then el codigo de respuesta <code>
-    #And verifico el <id> que regresa
+    And el campo "id" es <id>
+
     Examples:
       | id | code |
       | 2  | 200  |
