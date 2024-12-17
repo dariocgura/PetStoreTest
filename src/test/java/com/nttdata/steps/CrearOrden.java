@@ -6,27 +6,25 @@ import net.thucydides.core.annotations.Step;
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class CrearUsuario {
+public class CrearOrden {
 
-    private static String CREATE_USER = "https://petstore.swagger.io/v2/user";
+    private static String CREATE_ORDER = "https://petstore.swagger.io/v2/store/order";
 
-    @Step("Crear usuario {0} en PetStore")
-    public void crearUsuario(String username, String firstName, String lastName){
+    @Step("Crear orden {0} en Store")
+    public void crearOrden(int id, int petId, int quantity){
         SerenityRest.given()
                 .contentType("application/json")
                 .relaxedHTTPSValidation()
                 .body("{\n" +
-                        "  \"id\": 0,\n" +
-                        "  \"username\": \""+username+"\",\n" +
-                        "  \"firstName\": \""+firstName+"\",\n" +
-                        "  \"lastName\": \""+lastName+"\",\n" +
-                        "  \"email\": \"string\",\n" +
-                        "  \"password\": \"string\",\n" +
-                        "  \"phone\": \"string\",\n" +
-                        "  \"userStatus\": 0\n" +
+                        "  \"id\": " + String.valueOf(id) + ",\n" +
+                        "  \"petId\": " + String.valueOf(petId) + ",\n" +
+                        "  \"quantity\": " + String.valueOf(quantity) + ",\n" +
+                        "  \"shipDate\": \"2024-12-17T01:21:43.777Z\",\n" +
+                        "  \"status\": \"placed\",\n" +
+                        "  \"complete\": true\n" +
                         "}")
                 .log().all()
-                .post(CREATE_USER)
+                .post(CREATE_ORDER)
                 .then()
                 .log().all()
         ;
